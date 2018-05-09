@@ -4,6 +4,8 @@
 By Jawad Kadir, Leo Liu (PM), Arif Roktim, and Michael Ruvinshteyn
 
 ## Idea Numero Uno -- Draw my thing
+#### ID: 160
+
 It's basically a drawing party game that can go in two different ways:
  
 Drawful:
@@ -14,7 +16,9 @@ Draw My Thing Way:
 Everyone is given a random word that they have to draw a picture representing the word. After time is up, one drawing will be shown and every player would have to guess what that pictures represents (players are rewarded points if they answer correctly and by how fast they figured out the answer ). Repeat until all pictures are shown and the winner is whoever has the most points."
 
 ## Idea Numero Dos -- Get Off My Planet
+#### ID: 145
 A game where you colonize a planet with farms, hospitals, power plants, workshops, mines, and tower defense structures in preparation for alien attacks. The attacks come in waves and the player has to fend them off and send attack ships of their own to defeat the aliens. /// You can place towers down and there will be enemies following a path which your towers will shoot at. Killing enemies gives you money which you can use to purchase/upgrade towers.
 
 ## Idea Numero Tres -- Food OCR
+#### ID: 167
 An app that takes a picture of a food/ uploads a picture of a food and then cross-checks the picture with Google Images and Yelp to find where you can get that food.
