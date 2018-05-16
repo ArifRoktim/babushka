@@ -11,3 +11,6 @@ pd 7
 ruvinshteynM -- 2018-05-16 12:55:28
 added log file; added base app.py for flask testing
 
+ruvinshteynM -- 2018-05-16 13:07:46
+added flask folders and primary templates
+
