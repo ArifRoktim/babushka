@@ -14,3 +14,6 @@ added log file; added base app.py for flask testing
 ruvinshteynM -- 2018-05-16 13:07:46
 added flask folders and primary templates
 
+liuY -- 2018-05-17 08:47:20
+updated README.md to include link to DO droplet
+
