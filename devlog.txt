@@ -17,3 +17,6 @@ added flask folders and primary templates
 liuY -- 2018-05-17 08:47:20
 updated README.md to include link to DO droplet
 
+ruvinshteynM -- 2018-05-18 13:17:44
+added basic welcome header with imported font
+
