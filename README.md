@@ -3,7 +3,7 @@
 
 By Jawad Kadir, Leo Liu (PM), Arif Roktim, and Michael Ruvinshteyn
 
-[proto0](206.189.178.173)
+[proto0](http://206.189.178.173)
 
 It's basically a drawing party game that can go in two different ways:
  
