@@ -8,6 +8,10 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route("/draw")
+def draw():
+    return render_template("draw.html")
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
