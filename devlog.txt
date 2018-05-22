@@ -20,6 +20,8 @@ updated README.md to include link to DO droplet
 ruvinshteynM -- 2018-05-18 13:17:44
 added basic welcome header with imported font
 
+arifR -- 2018-05-22 12:58:46
+Started work on drawing page
+
 ruvinshteynM -- 2018-05-22 13:08:10
 started template for logged in/out display on index.html
-
