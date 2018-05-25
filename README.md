@@ -3,7 +3,7 @@
 
 By Jawad Kadir, Leo Liu (PM), Arif Roktim, and Michael Ruvinshteyn
 
-[proto0](http://drawbushka.me/)
+[proto0](http://www.drawbushka.me/)
 
 It's basically a drawing party game that can go in two different ways:
  
