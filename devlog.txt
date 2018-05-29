@@ -25,3 +25,6 @@ Started work on drawing page
 
 ruvinshteynM -- 2018-05-22 13:08:10
 started template for logged in/out display on index.html
+
+liuY -- 2018-05-28 21:39:47
+made drawing on canvas with mouse possible, moving onto colors and erase
