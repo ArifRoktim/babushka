@@ -28,3 +28,6 @@ started template for logged in/out display on index.html
 
 liuY -- 2018-05-28 21:39:47
 made drawing on canvas with mouse possible, moving onto colors and erase
+
+liuY -- 2018-05-28 22:59:31
+finished with drawing in colors
