@@ -31,3 +31,6 @@ made drawing on canvas with mouse possible, moving onto colors and erase
 
 liuY -- 2018-05-28 22:59:31
 finished with drawing in colors
+liuY -- 2018-05-29 13:54:55
+added black to pallete, implemented erase as white
+
