@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 
 {% block content %}
 
@@ -14,16 +14,6 @@
 
 </center>
 
-<script>
-var drawCircle = function(ctx, x, y, r){
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, 2 * Math.PI);
-  ctx.fill();
-};
-
-var c = document.getElementById("drawbushka");
-var ctx = c.getContext("2d");
-
-</script>
+<script src="static/js/draw.js"></script>
 
 {% endblock content %}
