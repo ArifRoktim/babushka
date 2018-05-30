@@ -24,8 +24,21 @@ ctx.fillStyle = "black";
 var colorPicker = document.getElementsByTagName("td");
 
 for(var i = 0; i < colorPicker.length; i++){
-  colorPicker[i].addEventListener("click", function(){ console.log(this.getAttribute("clr")); ctx.fillStyle = this.getAttribute("clr"); }); //clr is a custom attribute
+  colorPicker[i].addEventListener("click", 
+    function(){
+      console.log("color: " + this.getAttribute("clr"));
+      ctx.fillStyle = this.getAttribute("clr"); //clr is a custom attribute containing a hex rgb value
+    }
+  ); 
 }
+
+document.getElementById("clear")
+  .addEventListener("click", 
+    function(){
+      ctx.clearRect(0, 0, c.width, c.height);
+    }
+  );
+
 
 var drawCircle = function(ctx, x, y, r){
   ctx.beginPath();
