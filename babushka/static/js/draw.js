@@ -55,7 +55,7 @@ var draw = function(id){
 
   window.requestAnimationFrame(draw);
 
-  //limit fps
+  //limit fps: from https://stackoverflow.com/a/19772220
   now = Date.now();
   elapsed = now - then;
 
