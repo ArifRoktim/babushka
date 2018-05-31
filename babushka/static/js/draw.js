@@ -1,3 +1,7 @@
+// Declare/initialize some global variables
+var fpsInterval, now, then, elapsed;
+var fps = 60;
+
 //keeps track of whether the mouse is up or down
 var mouseDown = false;
 document.body.onmousedown = function(){
@@ -48,10 +52,32 @@ var drawCircle = function(ctx, x, y, r){
 
 var draw = function(id){
   //console.log(id)
-  if (mouseDown){
-    drawCircle(ctx, cursorX, cursorY, 10)
-  }
+
   window.requestAnimationFrame(draw);
+
+  //limit fps
+  now = Date.now();
+  elapsed = now - then;
+
+  //if enough time elapsed draw stuff
+  //console.log(elapsed, "\t", fpsInterval);
+  if (elapsed > fpsInterval) {
+
+    // Get ready for next frame by setting then=now, but also adjust for your
+    // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+    then = now - (elapsed % fpsInterval);
+
+    if (mouseDown){
+      drawCircle(ctx, cursorX, cursorY, 10)
+    }
+  }
+
 }
 
-window.requestAnimationFrame(draw);
+//window.requestAnimationFrame(draw);
+var start = function(fps){
+  fpsInterval = 1000/fps;
+  then = Date.now();
+  draw();
+}; start(fps);
+

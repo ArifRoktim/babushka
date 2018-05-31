@@ -37,3 +37,7 @@ added black to pallete, implemented erase as white
 
 liuY -- 2018-05-29-23:17:46
 added a clear button to canvas
+
+arifR -- 2018-05-31 11:39:30
+Add fps limiter
+
