@@ -3,15 +3,18 @@
 {% block content %}
 
 <center>
-  <h1 class="w3-center w3-animate-left">Welcome to Drawbushka!</h1>
+    <h1 class="w3-center w3-animate-left">Welcome to Drawbushka!</h1>
 
-  <br><br><br><br><br>
+    <br><br><br><br><br>
 
-  {% if selection %}
-  <button class="w3-center w3-animate-left"> h1 </button>
-  {% else %}
-  <button class="w3-center w3-animate-left"> h2 </button>
-  {% endif %}
+    {% if selection %}
+    <button onclick="window.location.href='/login'" class="btn w3-center w3-animate-left"> Login </button>&emsp;
+    <button onclick="window.location.href='/register'" class="btn w3-center w3-animate-left"> Create Account </button>
+    {% else %}
+    <button onclick="window.location.href='/games'" class="btn w3-center w3-animate-left"> Browse Games </button>&emsp;
+    <button onclick="window.location.href='/create'" class="btn w3-center w3-animate-left"> Create Game </button>&emsp;
+    <button onclick="window.location.href='/logout'" class="btn w3-center w3-animate-left"> Logout </button>
+    {% endif %}
 </center>
 
 {% endblock content %}
