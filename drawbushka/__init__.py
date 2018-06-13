@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    if ("user" not in session):
+    if ("user" in session):
         return render_template("index.html", selection = "h1")
     else:
         return render_template("index.html", selection = None)
@@ -21,6 +21,12 @@ def login():
 @app.route("/draw")
 def draw():
     return render_template("draw.html")
+
+@app.route("/logout", methods=["GET", "POST"])
+def logout():
+    if "username" in session:
+        session.pop("username")
+    return redirect("/")
 
 if __name__ == "__main__":
     app.debug = True
