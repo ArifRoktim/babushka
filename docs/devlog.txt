@@ -44,3 +44,22 @@ Add fps limiter
 arifL -- 2018-06-01 12:55:42
 Test out branches and merging
 
+ruvinshteynM -- 2018-06-04 13:19:42
+copied basic file for database creation into util folder; database file created in data
+
+liuY -- 2018-06-12 23:35:34
+added database code for registering and verifying accounts
+
+liuY -- 2018-06-13 00:07:35
+finished user registration and verification
+
+ruvinshteynM -- 2018-06-14 02:34:44
+added lobby creation, only makes id without any stored game datakadirJ -- 2018-06-13 04:28:01
+added lobbies to database
+
+kadirJ -- 2018-06-13 05:38:09
+added waiting page
+
+kadirJ -- 2018-06-13 06:38:16
+finished server creation
+
