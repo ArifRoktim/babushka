@@ -4,7 +4,6 @@ var fps = 60;
 var pointA = null;
 var pointB = null;
 var width = 10;
-var step = 0.75;
 
 //keeps track of whether the mouse is up or down
 var mouseDown = false;
@@ -36,6 +35,7 @@ for(var i = 0; i < colorPicker.length; i++){
     function(){
       console.log("color: " + this.getAttribute("clr"));
       ctx.fillStyle = this.getAttribute("clr"); //clr is a custom attribute containing a hex rgb value
+      ctx.strokeStyle = this.getAttribute("clr");
     }
   ); 
 }
@@ -60,6 +60,14 @@ var draw = function(id){
       ctx.fill();
     };
 
+    var drawLine = function(ctx, x1, y1, x2, y2){
+        ctx.lineWidth=width;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+    };
+
     //console.log("help!")
     //if point is null, then we don't need to draw anything
     if( point == null ){
@@ -68,31 +76,9 @@ var draw = function(id){
     pointB = pointA;
     pointA = point;
     if(pointB == null){
-      drawCircle(ctx, pointA[0], pointA[1], width);
+      //drawCircle(ctx, pointA[0], pointA[1], width);
+      drawLine(ctx, pointA[0], pointA[1], pointA[0]+1, pointA[1]+1);
     }
-
-    var drawLine = function(ctx, x1, y1, x2, y2){
-      var x, y;
-
-      //if 2nd point is to left of first one, switch the points
-      if( x2 < x1 ){
-        console.log("switch");
-        x = x2; y = y2;
-        x2 = x1; y2 = y1;
-        x1 = x; y1 = y;
-      } else {
-        console.log("no");
-        x = x1; y = y1;
-      }
-      //either way, (x,y) becomes the point thats closer to the left
-      xRange = x2-x1; //100
-      yRange = y2-y1; //100
-      while( x < x2 ){ //150, 200
-        y = y1 + yRange * ((x-x1) / xRange)
-        drawCircle(ctx, x, y, width);
-        x += step;
-      }
-    };
 
     if(pointB !== null){
       drawLine(ctx, pointA[0], pointA[1], pointB[0], pointB[1]);
