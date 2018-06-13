@@ -8,7 +8,7 @@ f="data/db.db"
 def create_db():
     db = sqlite3.connect(f)
     c = db.cursor()
-    command = "CREATE TABLE IF NOT EXISTS users(id INTEGER, username TEXT, password TEXT)"
+    command = "CREATE TABLE IF NOT EXISTS users( username TEXT, password TEXT)"
     c.execute(command)
     
 def add_user(username, password):
@@ -16,17 +16,10 @@ def add_user(username, password):
     c = db.cursor()
     command = "SELECT username FROM users WHERE username = \'" + username + "\'" #checks if username already exists
     result = c.execute(command)
-    if result == None:
+    if result.fetchone() == None:
         encrypt = sha256(password).hexdigest() #encrypt password
         
-        command = "SELECT id FROM users ORDER BY id DESC" #generate id for user
-        c.execute(command)
-        id = c.fetchone()
-        if (id == None):
-            id = 0
-        id = id[0] +1
-        
-        command = "INSERT INTO users VALUES(" + str(id) + ",'" + username + "','" + encrypt + "')"
+        command = "INSERT INTO users VALUES('" + username + "','" + encrypt + "')"
         c.execute(command)
         
         db.commit()
@@ -49,4 +42,9 @@ def auth_user(username, password): #note: this does not differentiate between wr
     
     
 if __name__ == "__main__":
+
+    f = "../data/db.db"
     create_db()
+    print add_user("leo", "wat")
+  
+    

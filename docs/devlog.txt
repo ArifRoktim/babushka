@@ -47,3 +47,6 @@ Test out branches and merging
 ruvinshteynM -- 2018-06-04 13:19:42
 copied basic file for database creation into util folder; database file created in data
 
+liuY -- 2018-06-12 23:35:34
+added database code for registering and verifying accounts
+
