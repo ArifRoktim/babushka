@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    if ("user" in session):
+    if ("user" not in session):
         return render_template("index.html", selection = "h1")
     else:
         return render_template("index.html", selection = None)
@@ -17,6 +17,10 @@ def login():
         return render_template("login.html")
     else:
         return render_template("index.html", selection = None)
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
     
 @app.route("/draw")
 def draw():
