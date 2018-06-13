@@ -56,14 +56,23 @@ def signup():
         flash('That username has already been taken!')
 	return render_template('register.html')
 
+@app.route("/create")
+def create():
+    if "user" not in session:
+        return redirect("/")
+    code = Math.floor(Math.random() * 1000000)
+    while db_builder.auth_id(code):
+        code = Math.floor(Math.random() * 1000000)
+    return render_template("create.html", code_num = code)
+
 @app.route("/draw")
 def draw():
     return render_template("draw.html")
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
-    if "username" in session:
-        session.pop("username")
+    if "user" in session:
+        session.pop("user")
     return redirect("/")
 
 if __name__ == "__main__":

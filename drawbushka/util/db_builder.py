@@ -38,12 +38,23 @@ def auth_user(username, password): #note: this does not differentiate between wr
     return (entered_password == actual_password)
 
     
+def create_lobbies():
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    command = "CREATE TABLE IF NOT EXISTS games(id INTEGER)"
+    c.execute(command)
     
+def auth_id(id_num):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    command = "SELECT id FROM games WHERE id = " + id_num
+    return c.execute(command).fetchone() != None
     
 if __name__ == "__main__":
 
     f = "../data/db.db"
     create_db()
+    create_lobbies()
     print add_user("leo", "wat")
     print auth_user("leo", "wat")
   

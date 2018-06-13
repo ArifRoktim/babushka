@@ -53,3 +53,5 @@ added database code for registering and verifying accounts
 liuY -- 2018-06-13 00:07:35
 finished user registration and verification
 
+ruvinshteynM -- 2018-06-14 02:34:44
+added lobby creation, only makes id without any stored game data
