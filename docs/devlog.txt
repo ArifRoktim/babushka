@@ -50,3 +50,6 @@ copied basic file for database creation into util folder; database file created 
 liuY -- 2018-06-12 23:35:34
 added database code for registering and verifying accounts
 
+liuY -- 2018-06-13 00:07:35
+finished user registration and verification
+
