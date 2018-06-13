@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<center>
+
+    <h1 class="w3-center w3-animate-left">Create a Lobby</h1>
+
+    <br><br><br><br><br>
+
+    <form action="/create" method="get">
+        <label><strong>Points to Win:</strong></label>
+        <input type="number" name="max_points">
+        <br><br>
+        <input type="submit" value="Create Lobby" class="btn">
+    </form>
+    
+</center>
+
+{% endblock content %}
