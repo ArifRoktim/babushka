@@ -57,3 +57,6 @@ ruvinshteynM -- 2018-06-14 02:34:44
 added lobby creation, only makes id without any stored game datakadirJ -- 2018-06-13 04:28:01
 added lobbies to database
 
+kadirJ -- 2018-06-13 05:38:09
+added waiting page
+
