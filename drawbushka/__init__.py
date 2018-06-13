@@ -11,6 +11,13 @@ def home():
     else:
         return render_template("index.html", selection = None)
 
+@app.route("/login")
+def login():
+    if ("user" not in session):
+        return render_template("login.html")
+    else:
+        return render_template("index.html", selection = None)
+    
 @app.route("/draw")
 def draw():
     return render_template("draw.html")
