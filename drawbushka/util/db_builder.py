@@ -54,10 +54,15 @@ def add_lobby(code, creator):
     command = "INSERT INTO " + code + " VALUES(\'" + creator + "\', 0, NULL, NULL, 0)"
     c.execute(command)
 
+def add_player(lobby, username):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    command = "INSERT INTO " + lobby + " VALUES(\'" + username + "\', 0, NULL, NULL, 0)"
+
 def auth_id(id_num):
     db = sqlite3.connect(f)
     c = db.cursor()
-    command = "SELECT id FROM games WHERE id = " + id_num
+    command = "SELECT id FROM games WHERE id = " + str(id_num)
     return c.execute(command).fetchone() != None
 
 if __name__ == "__main__":

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, flash, redirect, url_for, request, session
 import os
 import json
+import sqlite3
+import math, random
 
 from util import db_builder
 
@@ -54,32 +56,49 @@ def signup():
         return redirect("/")
     else:
         flash('That username has already been taken!')
-	return render_template('register.html')
+    return render_template('register.html')
 
 @app.route("/create")
 def create():
     if "user" not in session:
         return redirect("/")
-    code = Math.floor(Math.random() * 1000000)
+    code = math.floor(random.random() * 1000000)
     while db_builder.auth_id(code):
-        code = Math.floor(Math.random() * 1000000)
+        code = math.floor(random.random() * 1000000)
     add_lobby(code, session["user"])
 
     return render_template("create.html", code_num = code)
 
+@app.route("/join", methods=["GET"])
+def join():
+    id = request.args['id']
+    if not db_builder.auth_id(id):
+        add_player(id, session["user"])
+        session["id"] = id
+        return render_template("wait.html", id = id)
+    else:
+        flash('That code is invalid')
+        return render_template("join.html")
 @app.route("/draw")
 def draw():
     return render_template("draw.html")
 
 @app.route("/wait")
 def wait():
-    if
+    return render_template("wait.html")
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
     if "user" in session:
         session.pop("user")
     return redirect("/")
+
+@app.route("/waitingstatus", methods=["GET", "POST"])
+def waitingstatus():
+    db = sqlite3.connect("data/db.db")
+    c = db.cursor()
+    command = "SELECT username from " + request.post["id"]
+    return c.execute(command[0]).length
 
 if __name__ == "__main__":
     app.debug = True
