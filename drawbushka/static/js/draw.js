@@ -28,16 +28,16 @@ ctx.fillStyle = "black";
 var colorPicker = document.getElementsByTagName("td");
 
 for(var i = 0; i < colorPicker.length; i++){
-  colorPicker[i].addEventListener("click", 
+  colorPicker[i].addEventListener("click",
     function(){
       console.log("color: " + this.getAttribute("clr"));
       ctx.fillStyle = this.getAttribute("clr"); //clr is a custom attribute containing a hex rgb value
     }
-  ); 
+  );
 }
 
 document.getElementById("clear")
-  .addEventListener("click", 
+  .addEventListener("click",
     function(){
       ctx.clearRect(0, 0, c.width, c.height);
     }
@@ -68,7 +68,8 @@ var draw = function(id){
     then = now - (elapsed % fpsInterval);
 
     if (mouseDown){
-      drawCircle(ctx, cursorX, cursorY, 10)
+      ctx.lineTo(cursorX, cursorY);
+      drawCircle(ctx, cursorX, cursorY, 10);
     }
   }
 
@@ -80,4 +81,3 @@ var start = function(fps){
   then = Date.now();
   draw();
 }; start(fps);
-

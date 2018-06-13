@@ -10,7 +10,7 @@ def create_db():
     c = db.cursor()
     command = "CREATE TABLE IF NOT EXISTS users( username TEXT, password TEXT)"
     c.execute(command)
-    
+
 def add_user(username, password):
     db = sqlite3.connect(f)
     c = db.cursor()
@@ -18,16 +18,16 @@ def add_user(username, password):
     result = c.execute(command)
     if result.fetchone() == None:
         encrypt = sha256(password).hexdigest() #encrypt password
-        
+
         command = "INSERT INTO users VALUES('" + username + "','" + encrypt + "')"
         c.execute(command)
-        
+
         db.commit()
         db.close()
         return True
     else:
         db.close()
-        return False    
+        return False
 
 def auth_user(username, password): #note: this does not differentiate between wrong password and non-existing username
     db = sqlite3.connect(f)
@@ -37,19 +37,29 @@ def auth_user(username, password): #note: this does not differentiate between wr
     actual_password = c.execute(command).fetchone()[0]
     return (entered_password == actual_password)
 
-    
+
 def create_lobbies():
     db = sqlite3.connect(f)
     c = db.cursor()
-    command = "CREATE TABLE IF NOT EXISTS games(id INTEGER)"
+    command = "CREATE TABLE IF NOT EXISTS games(id INTEGER, round TEXT, drawing TEXT)"
     c.execute(command)
-    
+
+def add_lobby(code, creator):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    command = "INSERT INTO games VALUES(" + code + ", \'Waiting\', NULL)"
+    c.execute(command)
+    command = "CREATE TABLE " + code + "(username TEXT, points INTEGER, drawing TEXT, word TEXT, state INTEGER)"
+    c.execute(command)
+    command = "INSERT INTO " + code + " VALUES(\'" + creator + "\', 0, NULL, NULL, 0)"
+    c.execute(command)
+
 def auth_id(id_num):
     db = sqlite3.connect(f)
     c = db.cursor()
     command = "SELECT id FROM games WHERE id = " + id_num
     return c.execute(command).fetchone() != None
-    
+
 if __name__ == "__main__":
 
     f = "../data/db.db"
@@ -57,5 +67,3 @@ if __name__ == "__main__":
     create_lobbies()
     print add_user("leo", "wat")
     print auth_user("leo", "wat")
-  
-    

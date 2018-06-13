@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, url_for, request, session 
+from flask import Flask, render_template, flash, redirect, url_for, request, session
 import os
 import json
 
@@ -25,7 +25,7 @@ def login():
 def auth():
     if "user" in session:
         return redirect("/")
-    
+
     form = request.form
     username = form["User"]
     password = form["Pass"]
@@ -35,7 +35,7 @@ def auth():
     else:
         flash("invalid credentials!")
         return redirect("/login")
-    
+
 @app.route("/register")
 def register():
     return render_template("register.html")
@@ -43,13 +43,13 @@ def register():
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     form = request.form
-    username = form['User'] 
+    username = form['User']
     password = form['Pass']
     confpass = form['confPass']
     if password != confpass:
         flash('The 2 passwords that you entered do not match!')
         return render_template('register.html')
-    
+
     if db_builder.add_user(username, password):
         return redirect("/")
     else:
@@ -63,11 +63,17 @@ def create():
     code = Math.floor(Math.random() * 1000000)
     while db_builder.auth_id(code):
         code = Math.floor(Math.random() * 1000000)
+    add_lobby(code, session["user"])
+
     return render_template("create.html", code_num = code)
 
 @app.route("/draw")
 def draw():
     return render_template("draw.html")
+
+@app.route("/wait")
+def wait():
+    if
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
