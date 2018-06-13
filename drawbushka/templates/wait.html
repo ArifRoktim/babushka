@@ -12,11 +12,13 @@
 </center>
 
 <script>
-  $.post("/waitingstatus", {id:{{id}}},
-      function(data,status){
-          if (data == 4){
-              window.location.replace("/draw");
-          }
-  });
+  while(true){
+      $.post("/waitingstatus", {id:{{id}}},
+          function(data,status){
+              if (data == 4){
+                  window.location.replace("/draw");
+              }
+      });
+  }
 </script>
 {% endblock content %}

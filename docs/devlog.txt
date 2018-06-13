@@ -60,3 +60,6 @@ added lobbies to database
 kadirJ -- 2018-06-13 05:38:09
 added waiting page
 
+kadirJ -- 2018-06-13 06:38:16
+finished server creation
+

@@ -2,7 +2,7 @@ from flask import Flask, render_template, flash, redirect, url_for, request, ses
 import os
 import json
 import sqlite3
-import math, random
+import random
 
 from util import db_builder
 
@@ -62,30 +62,30 @@ def signup():
 def create():
     if "user" not in session:
         return redirect("/")
-    code = math.floor(random.random() * 1000000)
+    code = int(random.random() * 1000000)
     while db_builder.auth_id(code):
-        code = math.floor(random.random() * 1000000)
-    add_lobby(code, session["user"])
+        code = int(random.random() * 1000000)
+    db_builder.add_lobby(code, session["user"])
 
     return render_template("create.html", code_num = code)
 
-@app.route("/join", methods=["GET"])
+@app.route("/join")
 def join():
-    id = request.args['id']
-    if not db_builder.auth_id(id):
-        add_player(id, session["user"])
+    return render_template("join.html")
+@app.route("/draw")
+def draw():
+    return render_template("draw.html")
+
+@app.route("/wait", methods=["GET", "POST"])
+def wait():
+    id = request.args['code']
+    if db_builder.auth_id(id):
+        db_builder.add_player(id, session["user"])
         session["id"] = id
         return render_template("wait.html", id = id)
     else:
         flash('That code is invalid')
         return render_template("join.html")
-@app.route("/draw")
-def draw():
-    return render_template("draw.html")
-
-@app.route("/wait")
-def wait():
-    return render_template("wait.html")
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():

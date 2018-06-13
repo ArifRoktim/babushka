@@ -47,17 +47,18 @@ def create_lobbies():
 def add_lobby(code, creator):
     db = sqlite3.connect(f)
     c = db.cursor()
-    command = "INSERT INTO games VALUES(" + code + ", \'Waiting\', NULL)"
+    command = "INSERT INTO games VALUES(" + str(code) + ", \'Waiting\', NULL)"
     c.execute(command)
-    command = "CREATE TABLE " + code + "(username TEXT, points INTEGER, drawing TEXT, word TEXT, state INTEGER)"
+    command = "CREATE TABLE IF NOT EXISTS lobby_" + str(code) + "(username TEXT, points INTEGER, drawing TEXT, word TEXT, state INTEGER)"
     c.execute(command)
-    command = "INSERT INTO " + code + " VALUES(\'" + creator + "\', 0, NULL, NULL, 0)"
+    command = "INSERT INTO lobby_" + str(code) + " VALUES(\'" + creator + "\', 0, NULL, NULL, 0)"
     c.execute(command)
 
 def add_player(lobby, username):
     db = sqlite3.connect(f)
     c = db.cursor()
-    command = "INSERT INTO " + lobby + " VALUES(\'" + username + "\', 0, NULL, NULL, 0)"
+    command = "INSERT INTO lobby_" + lobby + " VALUES(\'" + username + "\', 0, NULL, NULL, 0)"
+    c.execute(command)
 
 def auth_id(id_num):
     db = sqlite3.connect(f)
