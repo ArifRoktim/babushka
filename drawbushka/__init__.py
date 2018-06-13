@@ -21,6 +21,21 @@ def login():
     else:
         return render_template("index.html", selection = None)
 
+@app.route("/auth", methods=["GET", "POST"])
+def auth():
+    if "user" in session:
+        return redirect("/")
+    
+    form = request.form
+    username = form["User"]
+    password = form["Pass"]
+    if db_builder.auth_user(username, password):
+        session["user"] = username
+        return redirect("/")
+    else:
+        flash("invalid credentials!")
+        return redirect("/login")
+    
 @app.route("/register")
 def register():
     return render_template("register.html")
